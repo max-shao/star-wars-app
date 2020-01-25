@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <input type="text" id="search_input" />
-    <button v-on:click="searchHanler()">search</button>
+    <button v-on:click="searchHandler()">search</button>
     <film :films="films" :search_item="search_item"></film>
   </div>
 </template>
@@ -38,7 +38,7 @@ export default {
         }
       });
     },
-    searchHanler() {
+    searchHandler() {
       let keyWord = document.getElementById("search_input").value;
       this.search_item = String(keyWord);
     }
