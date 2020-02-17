@@ -10,6 +10,8 @@ export default new Vuex.Store({
   getters: {
     films: state => state.films.map(f => ({ ...f, id: f.url.split("/")[5] })),
 
+    findFilm: state => title => state.films.find(f => f.title == title),
+
     isLoaded: state => !!state.films.length
   }
 });

@@ -14,14 +14,9 @@ const routes = [
     component: Home
   },
   {
-    path: "/filmDetails/:id",
+    path: "/filmDetails/:FilmTitle",
     name: "filmDetails",
-    component: FilmDetails,
-    props: {
-      id: {
-        default: 1
-      }
-    }
+    component: FilmDetails
   },
   {
     path: "/characterDetails/:characterId",

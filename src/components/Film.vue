@@ -14,7 +14,7 @@
             film.opening_crawl.toLowerCase().includes(search_item.toLowerCase())
         "
       >
-        <router-link :to="'/filmDetails/' + film.id">
+        <router-link :to="'/filmDetails/' + film.title">
           {{ film.title }}
         </router-link>
       </div>
