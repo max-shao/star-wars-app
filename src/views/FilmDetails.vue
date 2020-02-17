@@ -1,6 +1,10 @@
 <template>
   <div>
-    <div>
+    <v-container v-if="!$store.getters.isLoaded">
+      <v-progress-circular :size="60" indeterminate></v-progress-circular>
+    </v-container>
+
+    <div v-if="$store.getters.isLoaded" >
       <h3>{{ film.title }}</h3>
       <hr />
       <p>Director: {{ film.director }}</p>
@@ -25,7 +29,7 @@ export default {
   name: "filmDetails",
   data: function() {
     return {
-      film: {},
+      film: {}
       // parameter of Character component; contains all character id and character info.
       // characters: [],
       // parameter of Planet component; contains all planet id and planet info.

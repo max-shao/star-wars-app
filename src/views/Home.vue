@@ -2,6 +2,9 @@
   <div class="home">
     <input type="text" id="search_input" />
     <button v-on:click="searchHandler()">search</button>
+    <v-container v-if="!$store.getters.isLoaded">
+      <v-progress-circular :size="60" indeterminate></v-progress-circular>
+    </v-container>
     <film :search_item="search_item"></film>
   </div>
 </template>

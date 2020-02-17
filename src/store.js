@@ -8,6 +8,8 @@ export default new Vuex.Store({
     films: []
   },
   getters: {
-    films: state => state.films.map(f => ({ ...f, id: f.url.split("/")[5] }))
+    films: state => state.films.map(f => ({ ...f, id: f.url.split("/")[5] })),
+
+    isLoaded: state => !!state.films.length
   }
 });
