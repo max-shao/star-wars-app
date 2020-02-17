@@ -2,7 +2,7 @@
   <div class="home">
     <input type="text" id="search_input" />
     <button v-on:click="searchHandler()">search</button>
-    <film :films="films" :search_item="search_item"></film>
+    <film :search_item="search_item"></film>
   </div>
 </template>
 
@@ -14,8 +14,6 @@ export default {
   name: "home",
   data: function() {
     return {
-      // parameter of Film component; contains all film id and film info.
-      // films: store.state.films,
       // parameter of Film component; contains input search keyword.
       search_item: ""
     };

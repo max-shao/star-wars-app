@@ -27,7 +27,7 @@ export default {
       // parameter of Character component; contains all character id and character info.
       residents: [],
       // parameter of Film component; contains all film id and film info.
-      films: []
+      films: this.$store.state.films
     };
   },
   components: {

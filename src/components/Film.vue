@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="film in films" v-bind:key="film.info.id">
+    <div v-for="film in $store.getters.films" v-bind:key="film.id">
       <!-- 
         * Client Side Filter
         * Display film titles, if film title or opening_crawl contains input keyword.
@@ -10,12 +10,12 @@
         v-if="
           search_item == null ||
             search_item == '' ||
-            film.info.title.toLowerCase().includes(search_item.toLowerCase()) ||
-            film.info.opening_crawl.toLowerCase().includes(search_item.toLowerCase())
+            film.title.toLowerCase().includes(search_item.toLowerCase()) ||
+            film.opening_crawl.toLowerCase().includes(search_item.toLowerCase())
         "
       >
         <router-link :to="'/filmDetails/' + film.id">
-          {{ film.info.title }}
+          {{ film.title }}
         </router-link>
       </div>
     </div>
@@ -26,6 +26,6 @@
 export default {
   name: "film",
   // What the component expects as parameters
-  props: ["films", "search_item"]
+  props: ["search_item"]
 };
 </script>

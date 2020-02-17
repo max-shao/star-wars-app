@@ -3,7 +3,6 @@
     <div id="nav">
       <router-link to="/">Film List</router-link>
     </div>
-    {{ "Film:" + $store.state.films }}
     <router-view />
   </div>
 </template>
@@ -19,18 +18,7 @@ export default {
   },
   async created() {
     // * Fetch all films from api.
-    // * Wrap film id and film info individually into films[]
-    store.state.films = (
-      await axios.get("https://swapi.co/api/films/").then(response => {
-        for (let i = 0; i < response.data.results.length; i++) {
-          let element = {};
-          //Extract film id from url.
-          element["id"] = response.data.results[i].url.split("/")[5];
-          element["info"] = response.data.results[i];
-          this.$store.state.films.push(element);
-        }
-      })
-    ).data;
+    store.state.films = (await axios.get("https://swapi.co/api/films/")).data.results;
   }
 };
 </script>
