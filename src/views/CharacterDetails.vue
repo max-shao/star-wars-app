@@ -6,15 +6,15 @@
     <p>Height: {{ character.height }}</p>
     <p>Mass: {{ character.mass }}</p>
     <p>Skin Color: {{ character.skin_color }}</p>
-    <p>Homeworld:<planet :planets="homeworld"></planet></p>
-    <p>Films:<film :films="films"></film></p>
+    <!-- <p>Homeworld:<planet :planets="homeworld"></planet></p> -->
+    <!-- <p>Films:<film :films="films"></film></p> -->
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import Planet from "../components/Planet";
-import Film from "../components/Film";
+// import Planet from "../components/Planet";
+// import Film from "../components/Film";
 
 export default {
   name: "characterDetails",
@@ -22,14 +22,14 @@ export default {
     return {
       character: {},
       // parameter of Planet component; contains homeworld id and homeworld info.
-      homeworld: [],
+      // homeworld: [],
       // parameter of Film component; contains all film id and film info.
-      films: []
+      // films: []
     };
   },
   components: {
-    Planet,
-    Film
+    // Planet,
+    // Film
   },
   methods: {
     // * getCharacterDetails()

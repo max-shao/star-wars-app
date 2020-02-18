@@ -19,6 +19,7 @@ export default {
   async created() {
     // * Fetch all films from api.
     store.state.films = (await axios.get("https://swapi.co/api/films/")).data.results;
+    store.state.characters = (await axios.get("https://swapi.co/api/people/")).data.results;
   }
 };
 </script>

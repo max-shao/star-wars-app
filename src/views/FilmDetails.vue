@@ -13,9 +13,12 @@
       <hr />
       <p>Opening Crawl: {{ film.opening_crawl }}</p>
       <hr />
-      <!-- <p>Characters :<character :characters="characters"></character></p>
+      <!-- <p>Characters :<character :characters="characters"></character></p> -->
       <hr />
-      <p>Planets :<planet :planets="planets"></planet></p> -->
+      {{ film.characters.length }}
+      {{ $store.getters.findCharacter(film.characters[1]) }}
+      {{ characters[1] }}
+      <!-- <p>Planets :<planet :planets="planets"></planet></p> -->
     </div>
   </div>
 </template>
@@ -37,12 +40,20 @@ export default {
   computed: {
     film() {
       return this.$store.getters.findFilm(this.$route.params.FilmTitle);
+    },
+    characters() {
+      const film = this.$store.getters.findFilm(this.$route.params.FilmTitle);
+      const characterList = [];
+      film.characters.forEach(c => {
+        characterList.push(this.$store.getters.findCharacter(c));
+      });
+      return characterList;
     }
+  },
+  components: {
+    // Character
+    // Planet
   }
-  // components: {
-  //   // Character,
-  //   // Planet
-  // },
   // methods: {
   //   // * getFilmDetails()
   //   // * Fetch film according to the film id.

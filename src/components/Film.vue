@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="film in $store.getters.films" v-bind:key="film.id">
+    <div v-for="film in $store.state.films" v-bind:key="film.id">
       <!-- 
         * Client Side Filter
         * Display film titles, if film title or opening_crawl contains input keyword.

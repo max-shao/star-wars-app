@@ -1,9 +1,10 @@
 <template>
   <div>
-    <div v-for="character in characters" v-bind:key="character.id">
-      <router-link :to="'/characterDetails/' + character.id">
-        {{ character.info.name }}
-      </router-link>
+    <div v-for="character in characters" v-bind:key="character.url">
+      {{ "name: " + character.url }}
+      <!-- <router-link :to="'/characterDetails/' + character.name">
+        {{ character.name }}
+      </router-link> -->
     </div>
   </div>
 </template>

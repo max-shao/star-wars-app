@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    {{ "test: " + $store.getters.films }}
     <input type="text" id="search_input" />
     <button v-on:click="searchHandler()">search</button>
     <v-container v-if="!$store.getters.isLoaded">
