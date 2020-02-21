@@ -24,6 +24,9 @@ export default new Vuex.Store({
     },
     setCharacters(state, characters) {
       state.characters = characters;
+    },
+    addCharacters(state, characters) {
+      state.characters = [...state.characters, ...characters];
     }
   },
   actions: {
@@ -32,8 +35,14 @@ export default new Vuex.Store({
       context.commit('setFilms', films);
     },
     async getCharacters(context) {
-      const characters = (await axios.get("https://swapi.co/api/people/")).data.results;
-      context.commit('setCharacters', characters);
+      let currentPage = (await axios.get("https://swapi.co/api/people/")).data;
+      context.commit('setCharacters', currentPage.results);
+      let hasNext = true;
+      while(hasNext){
+        currentPage = (await axios.get(currentPage.next)).data;
+        context.commit('addCharacters', currentPage.results);
+        if(!currentPage.hasOwnProperty('next')) hasNext = false;
+      }
     }
   }
 });
