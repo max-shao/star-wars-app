@@ -22,11 +22,18 @@ export default new Vuex.Store({
     setFilms(state, films) {
       state.films = films;
     },
+    setCharacters(state, characters) {
+      state.characters = characters;
+    }
   },
   actions: {
     async getFilms(context) {
       const films = (await axios.get("https://swapi.co/api/films/")).data.results;
       context.commit('setFilms', films);
+    },
+    async getCharacters(context) {
+      const characters = (await axios.get("https://swapi.co/api/people/")).data.results;
+      context.commit('setCharacters', characters);
     }
   }
 });

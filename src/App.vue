@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import store from "./store.js";
 
 export default {
@@ -30,13 +29,11 @@ export default {
     // }
   },
   async created() {
-    // * Fetch all films from api.
-    this.$store.dispatch('getFilms');
+    // Fetch all films from api.
+    store.dispatch('getFilms');
 
-    store.state.characters = (
-      await axios.get("https://swapi.co/api/people/")
-    ).data.results;
-    // fetchCharacters();
+    // Fetch all characters from api.
+    store.dispatch('getCharacters');
   }
 };
 </script>
