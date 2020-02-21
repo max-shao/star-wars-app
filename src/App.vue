@@ -16,10 +16,27 @@ export default {
   data() {
     return {};
   },
+  methods: {
+    // fetchCharacters() {
+    //   axios
+    //     .get("https://swapi.co/api/people/", {
+    //       headers: { "Content-Type": "application/json" }
+    //     })
+    //     .then(response => {
+    //       // element["id"] = id;
+    //       element["info"] = response.data;
+    //       store.state.characters.push("test");
+    //     });
+    // }
+  },
   async created() {
     // * Fetch all films from api.
-    store.state.films = (await axios.get("https://swapi.co/api/films/")).data.results;
-    store.state.characters = (await axios.get("https://swapi.co/api/people/")).data.results;
+    this.$store.dispatch('getFilms');
+
+    store.state.characters = (
+      await axios.get("https://swapi.co/api/people/")
+    ).data.results;
+    // fetchCharacters();
   }
 };
 </script>

@@ -13,18 +13,21 @@
       <hr />
       <p>Opening Crawl: {{ film.opening_crawl }}</p>
       <hr />
-      <!-- <p>Characters :<character :characters="characters"></character></p> -->
+      <p>Characters :<character :characters="characters"></character></p>
       <hr />
-      {{ film.characters.length }}
-      {{ $store.getters.findCharacter(film.characters[1]) }}
-      {{ characters[1] }}
+      {{ "film.characters[1]: " + film.characters[1] }}
+      <hr />
+      <!-- {{ "findCharacter(film.characters[1]).name: " + $store.getters.findCharacter(film.characters[1]).name }} -->
+      <hr />
+      {{ "characters: " + characters.length }}
+      {{ "film.characters: " + film.characters.length }}
       <!-- <p>Planets :<planet :planets="planets"></planet></p> -->
     </div>
   </div>
 </template>
 
 <script>
-// import Character from "../components/Character";
+import Character from "../components/Character";
 // import Planet from "../components/Planet";
 
 export default {
@@ -42,16 +45,22 @@ export default {
       return this.$store.getters.findFilm(this.$route.params.FilmTitle);
     },
     characters() {
-      const film = this.$store.getters.findFilm(this.$route.params.FilmTitle);
+      // const film = this.$store.getters.findFilm(this.$route.params.FilmTitle);
       const characterList = [];
-      film.characters.forEach(c => {
-        characterList.push(this.$store.getters.findCharacter(c));
-      });
+      characterList.push(this.$store.getters.findCharacter("https://swapi.co/api/people/1/"));
+      characterList.push(this.$store.getters.findCharacter("https://swapi.co/api/people/2/"));
+      characterList.push(this.$store.getters.findCharacter("https://swapi.co/api/people/3/"));
+      characterList.push(this.$store.getters.findCharacter("https://swapi.co/api/people/4/"));
+      characterList.push(this.$store.getters.findCharacter("https://swapi.co/api/people/5/"));
+      // film.characters.forEach(c => {
+      //   characterList.push(this.$store.getters.findCharacter(c));
+      //   // console.log(this.$store.getters.findCharacter(c).name);
+      // });
       return characterList;
     }
   },
   components: {
-    // Character
+    Character
     // Planet
   }
   // methods: {

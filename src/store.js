@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import axios from "axios";
 
 Vue.use(Vuex);
 
@@ -16,5 +17,16 @@ export default new Vuex.Store({
     findCharacter: state => url => state.characters.find(c => c.url == url),
 
     isLoaded: state => !!state.films.length
+  },
+  mutations: {
+    setFilms(state, films) {
+      state.films = films;
+    },
+  },
+  actions: {
+    async getFilms(context) {
+      const films = (await axios.get("https://swapi.co/api/films/")).data.results;
+      context.commit('setFilms', films);
+    }
   }
 });
