@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div v-for="character in characters" v-bind:key="character">
-      <router-link :to="'/characterDetails/'">
-        {{ character.name }}
+    <div v-for="characterURL in characterURLs" v-bind:key="characterURL">
+      <router-link :to="'/characterDetails/' + characterURL.match(/\d+/g)">
+        {{ getCharacterName(characterURL) }}
       </router-link>
     </div>
   </div>
@@ -12,6 +12,11 @@
 export default {
   name: "character",
   // What the component expects as parameters
-  props: ["characters"]
+  props: ["characterURLs"],
+  methods: {
+    getCharacterName(characterURL) {
+      return this.$store.getters.findCharacterByURL(characterURL).name;
+    }
+  }
 };
 </script>

@@ -5,6 +5,10 @@ import FilmDetails from "../views/FilmDetails.vue";
 import CharacterDetails from "../views/CharacterDetails.vue";
 import PlanetDetails from "../views/PlanetDetails.vue";
 
+//Set to JSON Server address and Port
+Vue.prototype.SwapiURL = "https://swapi.dev/api/";
+
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -19,7 +23,7 @@ const routes = [
     component: FilmDetails
   },
   {
-    path: "/characterDetails/:characterName",
+    path: "/characterDetails/:characterID",
     name: "characterDetails",
     component: CharacterDetails
   },
