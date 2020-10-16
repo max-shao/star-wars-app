@@ -13,7 +13,6 @@
                 searchKeyword == '' ||
                 film.title.toLowerCase().includes(searchKeyword.toLowerCase()) ||
                 film.opening_crawl.toLowerCase().includes(searchKeyword.toLowerCase() )
-                && (filmURLs.length == 0)
                 )"
         >
           <router-link :to="'/filmDetails/' + film.title">{{ film.title }}</router-link>
